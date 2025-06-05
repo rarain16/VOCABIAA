@@ -1,0 +1,139 @@
+package com.example.vocabia;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+
+public class Homepage extends AppCompatActivity {
+    SearchView searchView;
+    ListView myListView;
+    ArrayList<String> arrayList;
+    ArrayAdapter<String> adapter;
+
+    String[] meanings = {
+            "Meaning: The part of your face used for smelling.",
+            "Meaning: Containing nothing.",
+            "Meaning: Lacking money or resources.",
+            "Meaning: Having great physical power.",
+            "Meaning: A sweet treat made from cacao.",
+            "Meaning: Completely filled.",
+            "Meaning: To move or travel.",
+            "Meaning: To move toward.",
+            "Meaning: Misbehaving.",
+            "Meaning: Of great length or duration.",
+            "Meaning: A white liquid from mammals.",
+            "Meaning: A female parent.",
+            "Meaning: A male parent.",
+            "Meaning: The part of your arm below the wrist.",
+            "Meaning: To consume food.",
+            "Meaning: An aquatic animal.",
+            "Meaning: Footwear.",
+            "Meaning: The reproductive part of a plant.",
+            "Meaning: Pleasantly hot.",
+            "Meaning: A tall plant with a trunk and branches.",
+            "Meaning: To fail to remember.",
+            "Meaning: The front of the head.",
+            "Meaning: A utensil for eating.",
+            "Meaning: One of the parts of the hand.",
+            "Meaning: An electronic device for processing information.",
+            "Meaning: Earth's natural satellite.",
+            "Meaning: The organ of sight.",
+            "Meaning: A road vehicle with an engine.",
+            "Meaning: A state of rest.",
+            "Meaning: Having little width or thickness."
+    };
+    String[] synonyms = {
+            "Synonym: no synonym", "Synonym: Vacant, void", "Synonym: Impoverished, needy", "Synonym: Powerful, mighty", "Synonym: Cocoa (sometimes used interchangeably)",
+            "Synonym: Complete, replete", "Synonym: Proceed, depart", "Synonym: Arrive, approach", "Synonym: Mischievous, unruly", "Synonym: Extended, lengthy",
+            "Synonym: no synonym", "Synonym: Mom, mama", "Synonym: Dad, papa", "Synonym: no synonym", "Synonym: Consume, devour", "Synonym: no synonym", "Synonym: Boots (a type of shoe)", "Synonym: Bloom, blossom",
+            "Synonym: Tepid, cozy", "Synonym: no synonym", "Synonym: Omit, neglect", "Synonym: no synonym", "Synonym: Digit", "Synonym: no synonym", "Synonym: no synonym", "Synonym: no synonym", "Synonym: no synonym", "Synonym: no synonym", "Synonym: Rest, slumber", "Synonym: Slender, slim"
+    };
+    String[] antonyms = {
+            "Antonym: no Antonym", "Antonym: Full", "Antonym: Wealthy, rich", "Antonym: Weak", "Antonym: no Antonym", "Antonym: Empty", "Antonym: Stop, stay", "Antonym: Go, leave", "Antonym: Good, well-behaved",
+            "Antonym: Short", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: Starve", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: Cold", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: Remember", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: no Antonym", "Antonym: Wakefulness", "Antonym: Thick, fat"
+    };
+    String[] hypernyms = {
+            "Hypernym: Facial feature", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: Parent", "Hypernym: Parent", "Hypernym: Body part", "Hypernym: no hypernym", "Hypernym: Animal", "Hypernym: Footwear", "Hypernym: Plant part", "Hypernym: no hypernym", "Hypernym: Plant", "Hypernym: no hypernym", "Hypernym: Body part", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: Celestial body", "Hypernym: Body part", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym", "Hypernym: no hypernym"
+    };
+    String[] hyponyms = {
+            "Hyponym: no hyponym", "Hyponym: Hollow", "Hyponym: Destitute", "Hyponym: Muscular", "Hyponym: Milk chocolate, dark chocolate", "Hyponym: Packed", "Hyponym: Run, walk, drive", "Hyponym: Stroll, rush", "Hyponym: Disrespectful", "Hyponym: Extended, prolonged", "Hyponym: no hyponym", "Hyponym: Cow's milk, breast milk", "Hyponym: no hyponym", "Hyponym: no hyponym", "Hyponym: Munch, gulp", "Hyponym: no hyponym", "Hyponym: Sneakers, sandals", "Hyponym: no hyponym", "Hyponym: Lukewarm", "Hyponym: no hyponym", "Hyponym: no hyponym", "Hyponym: Misremember", "Hyponym: no hyponym", "Hyponym: no hyponym", "Hyponym: Laptop, desktop", "Hyponym: no hyponym", "Hyponym: no hyponym", "Hyponym: Sedan, SUV", "Hyponym: Nap, doze", "Hyponym: Lean"
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_homepage);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        searchView = findViewById(R.id.Searchview);
+        myListView = findViewById(R.id.List);
+        arrayList = new ArrayList<>();
+        arrayList.add("Nose");
+        arrayList.add("Empty");
+        arrayList.add("Poor");
+        arrayList.add("Strong");
+        arrayList.add("Chocolate");
+        arrayList.add("Full");
+        arrayList.add("Go");
+        arrayList.add("Come");
+        arrayList.add("Naughty");
+        arrayList.add("Long");
+        arrayList.add("Milk");
+        arrayList.add("Mother");
+        arrayList.add("Father");
+        arrayList.add("Hand");
+        arrayList.add("Eat");
+        arrayList.add("Fish");
+        arrayList.add("Shoes");
+        arrayList.add("Flower");
+        arrayList.add("Warm");
+        arrayList.add("Tree");
+        arrayList.add("Forget");
+        arrayList.add("Face");
+        arrayList.add("Spoon");
+        arrayList.add("Finger");
+        arrayList.add("Computer");
+        arrayList.add("Moon");
+        arrayList.add("Eye");
+        arrayList.add("Car");
+        arrayList.add("Sleep");
+        arrayList.add("Thin");
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+        myListView.setAdapter(adapter);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+        myListView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(Homepage.this, WorldDetailActivity .class);
+            intent.putExtra("word", arrayList.get(position));
+            intent.putExtra("meaning", meanings[position]);
+            intent.putExtra("synonym", synonyms[position]);
+            intent.putExtra("antonym", antonyms[position]);
+            intent.putExtra("hypernym", hypernyms[position]);
+            intent.putExtra("hyponym", hyponyms[position]);
+            startActivity(intent);
+        });
+    }
+}
