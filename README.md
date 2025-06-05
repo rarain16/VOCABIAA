@@ -4,3 +4,12 @@ WELCOME TO VOCABIA! 😊❤️
 
 
 
+"It's simple but it is helpful for students like us."
+
+
+
+
+
+
+
+THANK YOU SIR AND CLASSMATES, GOD BLESS!
